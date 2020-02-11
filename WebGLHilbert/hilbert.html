@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+    <script id="vertShader" type="x-shader/x-vertex">
+        attribute vec2 coordinates;
+        uniform vec4 colors;
+        attribute float depth;
+        attribute float dx;
+        attribute float dy;
+        varying lowp vec4 vColor;
+        void main(void) {
+            gl_Position = vec4((coordinates+vec2(dx,dy))/depth,0.0,1.0);
+            vColor = colors;
+        }
+    </script>
+    <script id="fragShader" type="x-shader/x-vertex">
+        varying lowp vec4 vColor;
+        void main(void) { 
+            gl_FragColor = vColor;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="hilberts" class="container">
+
+    </div>
+    <canvas id="my_canvas"></canvas>
+    <div class="container">
+        <button onclick="addHilbert(3)">Dodaj krzywą</button><br>
+        <input type="range" id="order" class="slider" min="1" max="10" value="3"><br>
+        <h1 id="orderText">Stopień krzywej: 3</h1>
+        <input type="color" id="color" value="#000000">
+    </div>
+
+</body>
+
+</html>

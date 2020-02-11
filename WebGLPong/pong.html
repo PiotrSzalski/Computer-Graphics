@@ -1,0 +1,26 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.3.2/gl-matrix-min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script id="vertShader" type="x-shader/x-vertex">
+        attribute vec2 coordinates;
+        attribute float depth;
+        attribute vec4 colors;
+        uniform mat4 transformMatrix;
+        varying lowp vec4 vColor;
+        void main(void) {
+            gl_Position = transformMatrix * vec4(coordinates,depth,1.0);
+            vColor = colors;
+        }
+        </script>
+    <script id="fragShader" type="x-shader/x-vertex">
+        varying lowp vec4 vColor;
+        void main(void) { 
+            gl_FragColor = vColor;
+        }
+    </script>
+</head>
+<body>
+    <canvas id="my_canvas"></canvas>
+</body>
+</html>

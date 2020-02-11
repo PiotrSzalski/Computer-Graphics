@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="script.js"></script>
+		<style>
+			button {
+				float:center;
+				height: 50px;
+				width: 300px;
+				margin: 10px;
+			}
+			.menu {
+				float:left; width:25%; height:700px; margin-right: 20px
+			}
+		</style>
+    </head>
+    <body style="background:#ffebcc">
+        <svg id="svg" width="700" height="700" viewBox="0 0 0 0" style="border:solid 2px black">
+		<path id="path" d="" stroke-width="1" stroke="black" fill="transparent"/>
+	</svg>
+	<div class="menu">
+		<button id="button" onclick="draw()">Rysuj</button> </br>
+		<input style="width:300px" type="range" min="1" max="10" value="2" id="slider" onChange="change()">
+		<p id="value">Stopien = 2</p>
+	</div>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.3.2/gl-matrix-min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script id="vertShader" type="x-shader/x-vertex">
+        attribute vec3 coordinates;
+        attribute float pointSize;
+        uniform vec4 colors;
+        uniform mat4 transformMatrix;
+        varying lowp vec4 vColor;
+        void main(void) {
+            gl_Position = transformMatrix * vec4(coordinates,1.0);
+            gl_PointSize = pointSize;
+            vColor = colors;
+        }
+        </script>
+    <script id="fragShader" type="x-shader/x-vertex">
+        varying lowp vec4 vColor;
+        void main(void) { 
+            gl_FragColor = vColor;
+        }
+    </script>
+    <style>
+        .btn-group button {
+            background-color: #4CAF50;
+            border: 1px solid green; 
+            color: white;
+            padding: 10px 24px; 
+            cursor: pointer;
+            width: 100%; 
+            height: 100px;
+        }
+        body {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="my_canvas"></canvas>
+    <div class="btn-group">
+        <button onclick="setType(this)">LINES</button>
+        <button onclick="setType(this)">POINTS</button>
+        <button onclick="setType(this)">LINE_STRIP</button>
+        <button onclick="setType(this)">LINE_LOOP</button>
+        <button onclick="setType(this)">TRIANGLE_STRIP</button>
+        <button onclick="setType(this)">TRIANGLE_FAN</button>
+        <button onclick="setType(this)">TRIANGLES</button>
+    </div>
+</body>
+</html>
